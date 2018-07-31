@@ -1,18 +1,25 @@
+import java.util.Scanner;
 
 public class pallyFind {
 	public static void main(String [] args) {
-		String[] s = new String[1000];
-		s = findAllPalindromes("ghjghjggjgj");
+		System.out.println("Please enter string to check for palindromes:");
+		Scanner in = new Scanner(System.in);
+		String check = in.next();
+		String[] s = new String[check.length() * check.length()];
+		s = findAllPalindromes(check);
 		for (int i =0; i < s.length ; i++) {
-			System.out.println(s[i]);
+			if (s[i] != null) {
+				System.out.println(s[i]);				
+			}
 		}
+		in.close();
 	}	
 	
 	public static String[] findAllPalindromes(String s) {
-		String[] a = new String[12];
+		String[] a = new String[s.length()*s.length()];
 		int addr = 0;
 		for (int i= s.length(); i > 0; i--) {
-			for (int j=0; j < (s.length() - i) ; j++) {
+			for (int j=0; j <= (s.length() - i) ; j++) {
 				if (findPalindrome(s.substring(j,j+i))) {
 					a[addr] = s.substring(j,j+i);
 					addr++;
