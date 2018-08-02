@@ -16,7 +16,7 @@ public class pallyFind {
 	}	
 	
 	public static String[] findAllPalindromes(String s) {
-		String[] a = new String[s.length()*s.length()];
+		String[] a = new String[s.length()*s.length()];		//Just made an array that should fit all posiblities should be optimized
 		int addr = 0;
 		for (int i= s.length(); i > 0; i--) {
 			for (int j=0; j <= (s.length() - i) ; j++) {
@@ -29,20 +29,20 @@ public class pallyFind {
 		return a;
 	}
 	public static boolean findPalindrome(String s) {
-		if ((s.length() % 2) == 0) { 				//String is of even length
+		if ((s.length() % 2) == 0) { 				//Check for palindromes where substring is of even length
 			String s1 = s.substring(0, s.length()/2);
-			String s2 = s.substring(s.length()/2, s.length());
+			String s2 = s.substring(s.length()/2, s.length());	//splits the string into two halves
 			StringBuilder stringBuilder = new StringBuilder(s2);
-			s2 = stringBuilder.reverse().toString();
+			s2 = stringBuilder.reverse().toString();			//reverse one string
 			boolean isPal = true;
 			for(int i=0; i < s1.length(); i++) {
-				if ( s1.charAt(i) != s2.charAt(i)) {
+				if ( s1.charAt(i) != s2.charAt(i)) {			//then checks if they are the same
 					return false;
 				}
 			}
 			return isPal;
-		} else {
-			String s1 = s.substring(0, (s.length()/2));
+		} else {									//Check for palindromes in substrings of odd length
+			String s1 = s.substring(0, (s.length()/2));			//implementation is basically the same, except leaves out the middle char
 			String s2 = s.substring((s.length()/2)+1, s.length());
 			StringBuilder stringBuilder = new StringBuilder(s2);
 			s2 = stringBuilder.reverse().toString();
